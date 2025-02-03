@@ -1,0 +1,4 @@
+.footer-triangle {
+    height: 150px; /* Adjust height */
+    clip-path: polygon(100% 0%, -15% 100%, 100% 100%, 100% 100%);
+  }

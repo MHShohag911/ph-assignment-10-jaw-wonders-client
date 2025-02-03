@@ -1,0 +1,13 @@
+:where(.css-dev-only-do-not-override-1htoz2s).ant-btn {
+    font-size: 14px;
+    height: 32px;
+    padding: 15px 15px;
+}
+
+:where(.css-dev-only-do-not-override-1htoz2s).ant-btn-variant-solid:not(:disabled):not(.ant-btn-disabled) {
+    border-radius: 0;
+}
+
+:where(.css-dev-only-do-not-override-1htoz2s).ant-btn-compact-item:not(.ant-btn-compact-last-item) {
+    margin-inline-end: 0px;
+}

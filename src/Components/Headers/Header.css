@@ -1,0 +1,35 @@
+.ant-menu-item {
+    width: auto!important;
+    font-weight: bold;
+    color: white!important;
+}
+
+.ant-menu-item-selected {
+    background-color: transparent!important;
+    color: #fff!important;
+    border-bottom: 2px solid #fff;
+    border-radius: 0px!important;
+}
+
+
+:where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):active, :where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light>.ant-menu:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):active {
+    background-color: transparent;
+    border-radius: 0!important;
+}
+
+.menu-button:focus {
+    background: transparent!important;
+    padding: 15px 15px!important; 
+}
+
+:where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light .ant-menu-item-selected a, :where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light>.ant-menu .ant-menu-item-selected a, :where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light .ant-menu-item-selected a:hover, :where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light>.ant-menu .ant-menu-item-selected a:hover {
+    color: #fff;
+}
+
+:where(.css-dev-only-do-not-override-cdzvx5) a:active {
+    color: #fff;
+}
+
+:where(.css-dev-only-do-not-override-cdzvx5) a:hover {
+    color: #fff;
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "subcategory_name": "Wooden Furniture & Sculptures",
+    "image": "https://i.postimg.cc/W1yW48MC/card-1.jpg",
+    "description": "Handcrafted wooden furniture and sculptures that bring elegance and artistry to your home.",
+    "products": [
+      {
+        "name": "Teak Wood Coffee Table",
+        "image": "https://i.postimg.cc/W1yW48MC/card-1.jpg"
+      },
+      {
+        "name": "Oak Wood Bookshelf",
+        "image": "https://i.postimg.cc/SNyt1JST/card-3.jpg"
+      }
+    ],
+    "artist": {
+      "name": "James Carter",
+      "profile_pic": "https://i.postimg.cc/Hs3mnMzh/team-people-1.jpg",
+      "info": "James is a master craftsman with over 15 years of experience in creating intricate wooden furniture and sculptures. His work is inspired by nature and traditional art forms."
+    }
+  },
+  {
+    "subcategory_name": "Wooden Home Decor",
+    "image": "https://i.postimg.cc/Pr2VgTNt/card-4.jpg",
+    "description": "Beautiful wooden decor items to add a rustic charm to your living spaces.",
+    "products": [
+      {
+        "name": "Wooden Wall Clock",
+        "image": "https://i.postimg.cc/XNwMpP4J/subcat-1.jpg"
+      },
+      {
+        "name": "Hand-Carved Photo Frames",
+        "image": "https://i.postimg.cc/0QRVYNXC/card-6.jpg"
+      },
+      {
+        "name": "Wooden Candle Holders",
+        "image": "https://i.postimg.cc/nzN02nxm/subcat-2.jpg"
+      }
+    ],
+    "artist": {
+      "name": "Emily Johnson",
+      "profile_pic": "https://i.postimg.cc/mD4p7X2N/team-people-2.jpg",
+      "info": "Emily specializes in creating unique wooden home decor items. Her designs are a blend of modern aesthetics and traditional craftsmanship."
+    }
+  },
+  {
+    "subcategory_name": "Wooden Utensils and Kitchenware",
+    "image": "https://i.postimg.cc/90c1knhR/card-8.jpg",
+    "description": "Eco-friendly and durable wooden utensils and kitchenware for your daily use.",
+    "products": [
+      {
+        "name": "Wooden Spatula Set",
+        "image": "https://i.postimg.cc/1X55W1K9/subcat-3.jpg"
+      },
+      {
+        "name": "Bamboo Cutting Board",
+        "image": "https://i.postimg.cc/bJ8zJSdC/subcat-5.jpg"
+      },
+      {
+        "name": "Teak Wood Salad Bowl",
+        "image": "https://i.postimg.cc/wvYkR0Q5/subcat-4.jpg"
+      }
+    ],
+    "artist": {
+      "name": "Michael Brown",
+      "profile_pic": "https://i.postimg.cc/Mpqk8mQL/team-people-3.jpg",
+      "info": "Michael is passionate about creating sustainable kitchenware. His products are both functional and aesthetically pleasing."
+    }
+  },
+  {
+    "subcategory_name": "Jute Home Decor",
+    "image": "https://i.postimg.cc/FKcZH4Fk/card-15.jpg",
+    "description": "Eco-friendly jute decor items to add a natural touch to your home.",
+    "products": [
+      {
+        "name": "Jute Wall Hanging",
+        "image": "https://i.postimg.cc/YqqbfZRT/card-11.jpg"
+      },
+      {
+        "name": "Jute Table Mat Set",
+        "image": "https://i.postimg.cc/3xk1zGPB/card-13.jpg"
+      }
+    ],
+    "artist": {
+      "name": "Sophia Martinez",
+      "profile_pic": "https://i.postimg.cc/x1RwjNG1/team-people-4.jpg",
+      "info": "Sophia is an expert in crafting jute-based home decor items. Her work reflects her love for sustainable and eco-friendly materials."
+    }
+  },
+  {
+    "subcategory_name": "Jute Kitchenware & Utensils",
+    "image": "https://i.postimg.cc/JzSx8n8W/card-14.jpg",
+    "description": "Stylish and sustainable jute kitchenware for eco-conscious homes.",
+    "products": [
+      {
+        "name": "Jute Storage Baskets",
+        "image": "https://i.postimg.cc/FKcZH4Fk/card-15.jpg"
+      },
+      {
+        "name": "Jute Napkin Holders",
+        "image": "https://i.postimg.cc/ZK7jfHDn/card-12.jpg"
+      }
+    ],
+    "artist": {
+      "name": "David Wilson",
+      "profile_pic": "https://i.postimg.cc/sXt8HYzw/team-people-5.jpg",
+      "info": "David is known for his innovative jute kitchenware designs. His products are both practical and environmentally friendly."
+    }
+  },
+  {
+    "subcategory_name": "Jute and Wooden Jewellery",
+    "image": "https://i.postimg.cc/NMcxyzLJ/card-16.jpg",
+    "description": "Unique and stylish jewellery made from jute and wood, perfect for a natural look.",
+    "products": [
+      {
+        "name": "Jute and Wooden Earrings",
+        "image": "https://i.postimg.cc/NMcxyzLJ/card-16.jpg"
+      },
+      {
+        "name": "Wooden Bead Necklace",
+        "image": "https://i.postimg.cc/j544y47s/card-17.jpg"
+      },
+      {
+        "name": "Jute Bracelet with Wooden Beads",
+        "image": "https://i.postimg.cc/Hkgz3Sbj/card-18.jpg"
+      }
+    ],
+    "artist": {
+      "name": "Olivia Taylor",
+      "profile_pic": "https://i.postimg.cc/mkCnvP2R/team-people-6.jpg",
+      "info": "Olivia creates stunning jewellery using jute and wood. Her designs are inspired by nature and tribal art."
+    }
+  }
+]
