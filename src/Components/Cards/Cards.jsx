@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import { Dropdown } from "antd";
+import 'antd/dist/reset.css'; 
 import './Cards.css';
 
 const Cards = ({ products, setProducts }) => {

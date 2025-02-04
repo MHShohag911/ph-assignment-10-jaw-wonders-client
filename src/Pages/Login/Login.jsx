@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Checkbox, Divider, Form, Input, message } from "antd";
 import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
-// import "./Login.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
@@ -12,7 +11,7 @@ const onFinishFailed = (errorInfo) => {
 };
 
 const Login = () => {
-  const { signIn, signInWithGoogle, user } = useContext(AuthContext);
+  const { signIn, signInWithGoogle, user, loading, setLoading } = useContext(AuthContext);
   const [presentUser, setPresentUser] = useState(null);
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
@@ -20,12 +19,13 @@ const Login = () => {
 
   // console.log(presentUser);
 
-  const firebaseError = (message) => {
-    messageApi.open({
-      type: "error",
-      content: message,
-    });
-  };
+  const firebaseError = (errorMessage) => {
+      messageApi.open({
+        type: "error",
+        content: errorMessage,
+      });
+    };
+    
 
   const onFinish = (values) => {
     // console.log("Success:", values);
@@ -43,6 +43,7 @@ const Login = () => {
       .catch((error) => {
         // console.log(error.message.replace("Firebase: ", ""));
         firebaseError(error.message.replace("Firebase: ", ""));
+        setLoading(false)
       });
   };
 
@@ -61,22 +62,22 @@ const Login = () => {
           remember: "true",
         };
         if (presentUser === undefined) {
-          fetch("https://assignment-10-arts-and-crafts-server.vercel.app/user", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(values),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              // console.log(data);
-            });
+          fetch(
+            "https://assignment-10-arts-and-crafts-server.vercel.app/user",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(values),
+            }
+          )
         }
       })
       .catch((error) => {
         // console.log(error);
         firebaseError(error.message.replace("Firebase: ", ""));
+        setLoading(false)
       });
   };
 
@@ -84,11 +85,16 @@ const Login = () => {
     if (user) {
       fetch("https://assignment-10-arts-and-crafts-server.vercel.app/users")
         .then((res) => res.json())
-        .then((data) =>
-          setPresentUser(
-            data.find((currentUser) => currentUser.email === user.email)
-          )
-        );
+        .then((data) => {
+          const currentUser = data.find(
+            (currentUser) => currentUser.email === user.email
+          );
+          if (currentUser) {
+            setPresentUser(currentUser);
+          } else {
+            setPresentUser(null);
+          }
+        });
       // console.log(presentUser);
     }
   }, [user]);

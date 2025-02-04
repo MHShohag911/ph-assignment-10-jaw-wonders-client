@@ -1,4 +1,4 @@
-import { StrictMode, Suspense } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import "./index.css";
@@ -9,14 +9,12 @@ import { HelmetProvider } from "react-helmet-async";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
-      <HelmetProvider>
-        <ThemeProvider>
-          <AuthProvider>
-            <RouterProvider router={routes}></RouterProvider>
-          </AuthProvider>
-        </ThemeProvider>
-      </HelmetProvider>
-    </Suspense>
+    <HelmetProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <RouterProvider router={routes}></RouterProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </HelmetProvider>
   </StrictMode>
 );

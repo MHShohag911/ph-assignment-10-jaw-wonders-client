@@ -15,9 +15,6 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [auto, setAuto] = React.useState(false);
-  const [percent, setPercent] = React.useState(-50);
-  const timerRef = React.useRef(null);
 
   // Creating User With Email and Password
   const createUser = (email, password) => {
@@ -61,20 +58,11 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     logOut,
     loading,
+    setLoading
   };
-  React.useEffect(() => {
-    timerRef.current = setTimeout(() => {
-      setPercent((v) => {
-        const nextPercent = v + 5;
-        return nextPercent > 150 ? -50 : nextPercent;
-      });
-    }, 100);
-    return () => clearTimeout(timerRef.current);
-  }, [percent]);
-  const mergedPercent = auto ? "auto" : percent;
   return (
     <AuthContext.Provider value={authInfo}>
-      {loading ? <div className="min-h-screen flex justify-center items-center"><Spin percent={mergedPercent} size="large" /></div> : children}
+      {loading? <div className="min-h-screen flex justify-center items-center"><Spin size="large" /></div> : children}
     </AuthContext.Provider>
   );
 };

@@ -1,30 +1,15 @@
-:where(.css-dev-only-do-not-override-1htoz2s).ant-btn {
-    font-size: 14px;
-    height: 32px;
-    padding: 15px 15px;
-}
-
-:where(.css-dev-only-do-not-override-1htoz2s).ant-btn-variant-solid:not(:disabled):not(.ant-btn-disabled) {
-    border-radius: 0;
-}
-
-:where(.css-dev-only-do-not-override-1htoz2s).ant-btn-compact-item:not(.ant-btn-compact-last-item) {
-    margin-inline-end: 0px;
-}
-
-
-.btn-dropdown>:where(.css-dev-only-do-not-override-cdzvx5).ant-btn-compact-item:not(.ant-btn-compact-last-item) {
+.btn-dropdown > .ant-btn-compact-first-item {
     margin-inline-end: 1px!important;
 }
 
-.btn-dropdown > :where(.css-dev-only-do-not-override-cdzvx5).ant-btn-variant-outlined, :where(.css-dev-only-do-not-override-cdzvx5).ant-btn-variant-dashed{
+.btn-dropdown > .ant-btn-compact-first-item, .btn-dropdown > .ant-btn-compact-last-item{
     background-color: #167D7F!important;
     color: white!important;
     border: 1px solid #167D7F!important;
+    border-radius: 0!important;
 }
 
-.btn-dropdown > 
-:where(.css-dev-only-do-not-override-cdzvx5).ant-btn-variant-outlined:not(:disabled):not(.ant-btn-disabled):hover, :where(.css-dev-only-do-not-override-cdzvx5).ant-btn-variant-dashed:not(:disabled):not(.ant-btn-disabled):hover {
+.btn-dropdown > .ant-btn-compact-first-item:hover, .btn-dropdown > .ant-btn-compact-last-item:hover{
     color: #ffffff!important;
     border-color: #167D7F!important;
 }

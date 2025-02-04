@@ -95,7 +95,7 @@ const Header = () => {
             />
           </Link>
         </div>
-        <div onClick={handleToggle} className="flex items-center">
+        <div className="flex items-center">
           {!user && (
             <div className="flex">
               <Link to="/login">
@@ -118,12 +118,14 @@ const Header = () => {
           )}
           {user ? (
             <Avatar
+            onClick={handleToggle}
               className="cursor-pointer hover:opacity-70"
               size={50}
               src={user?.photoURL}
             />
           ) : (
             <Avatar
+              onClick={handleToggle}
               className="cursor-pointer hover:opacity-70"
               size={50}
               icon={<AntDesignOutlined />}
@@ -132,7 +134,7 @@ const Header = () => {
           <div
             className={`${
               openProfile ? "absolute" : "hidden"
-            } right-2 top-[80px] min-w-44 p-2 bg-white/80 w- rounded-md `}
+            } right-2 top-[80px] min-w-44 p-2 z-10 bg-white/80 w- rounded-md `}
           >
             <ul className="space-y-2">
               <li>
@@ -228,7 +230,7 @@ function AppMenu() {
           items={items}
         />
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center z-10">
         {user ? (
           <button
             onClick={logOut}
@@ -250,15 +252,17 @@ function AppMenu() {
             </Link>
           </div>
         )}
-        <div onClick={handleToggle} className="relative">
+        <div className="relative">
           {user ? (
             <Avatar
+            onClick={handleToggle}
               className="cursor-pointer hover:opacity-70"
               size={60}
               src={user?.photoURL}
             />
           ) : (
             <Avatar
+            onClick={handleToggle}
               className="cursor-pointer hover:opacity-70"
               size={60}
               icon={<AntDesignOutlined />}
