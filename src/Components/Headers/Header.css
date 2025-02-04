@@ -33,3 +33,15 @@
 :where(.css-dev-only-do-not-override-cdzvx5) a:hover {
     color: #fff;
 }
+
+/* :where(.css-dev-only-do-not-override-cdzvx5).ant-btn-variant-outlined:not(:disabled):not(.ant-btn-disabled):hover, :where(.css-dev-only-do-not-override-cdzvx5).ant-btn-variant-dashed:not(:disabled):not(.ant-btn-disabled):hover {
+    color: #4096ff;
+    border-color: #4096ff;
+    background: #ffffff;
+} */
+
+.menu-btn:hover{
+    color: white!important;
+    border-color: transparent!important;
+    background: transparent!important;
+}

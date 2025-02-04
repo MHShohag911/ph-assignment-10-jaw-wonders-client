@@ -84,8 +84,8 @@ const Header = () => {
   };
 
   return (
-    <div className="relative z-20 bg-secondary/70 rounded-2xl">
-      <div className="bg-secondary/50 flex justify-between md:hidden w-full min-h-20 relative rounded-xl px-2">
+    <div className="relative z-20">
+      <div className="bg-secondary/70 flex justify-between md:hidden w-full min-h-20 relative rounded-2xl px-2">
         <div className="">
           <Link to="/">
             <img
@@ -182,7 +182,7 @@ const Header = () => {
 
       <div>
         <Button
-          className="md:hidden menu-button border-none bg-transparent ml-16 absolute top-6"
+          className="md:hidden menu-button border-none bg-transparent ml-16 absolute top-6 menu-btn"
           onClick={toggleCollapsed}
         >
           <MenuOutlined className="text-3xl text-white" />
