@@ -119,7 +119,7 @@ const Header = () => {
             <div
               onClick={(e) => e.stopPropagation()}
               className={
-                "absolute right-2 top-[70px] min-w-44 p-2 bg-white/80 rounded-md"
+                "absolute right-2 top-[70px] min-w-44 p-2 bg-white/80 rounded-md z-10"
               }
             >
               <ul className="space-y-2">

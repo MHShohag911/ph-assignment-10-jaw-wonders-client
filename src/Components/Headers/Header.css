@@ -5,9 +5,8 @@
 }
 
 .ant-menu-item-selected {
-    background-color: transparent!important;
+    background-color: #29A0B1!important;
     color: #fff!important;
-    border-bottom: 2px solid #fff;
     border-radius: 0px!important;
 }
 
@@ -44,4 +43,9 @@
     color: white!important;
     border-color: transparent!important;
     background: transparent!important;
+}
+
+:where(.css-dev-only-do-not-override-cdzvx5).ant-menu-dark, :where(.css-dev-only-do-not-override-cdzvx5).ant-menu-dark>.ant-menu {
+    color: white!important;
+    background: #167D7F;
 }
