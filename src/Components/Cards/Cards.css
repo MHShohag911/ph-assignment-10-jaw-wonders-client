@@ -11,3 +11,20 @@
 :where(.css-dev-only-do-not-override-1htoz2s).ant-btn-compact-item:not(.ant-btn-compact-last-item) {
     margin-inline-end: 0px;
 }
+
+
+.btn-dropdown>:where(.css-dev-only-do-not-override-cdzvx5).ant-btn-compact-item:not(.ant-btn-compact-last-item) {
+    margin-inline-end: 1px!important;
+}
+
+.btn-dropdown > :where(.css-dev-only-do-not-override-cdzvx5).ant-btn-variant-outlined, :where(.css-dev-only-do-not-override-cdzvx5).ant-btn-variant-dashed{
+    background-color: #167D7F!important;
+    color: white!important;
+    border: 1px solid #167D7F!important;
+}
+
+.btn-dropdown > 
+:where(.css-dev-only-do-not-override-cdzvx5).ant-btn-variant-outlined:not(:disabled):not(.ant-btn-disabled):hover, :where(.css-dev-only-do-not-override-cdzvx5).ant-btn-variant-dashed:not(:disabled):not(.ant-btn-disabled):hover {
+    color: #ffffff!important;
+    border-color: #167D7F!important;
+}
