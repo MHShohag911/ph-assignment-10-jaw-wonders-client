@@ -7,7 +7,7 @@ import {
   PlusSquareFilled,
 } from "@ant-design/icons";
 import { Button, Menu, Avatar, Switch } from "antd";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Header.css";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -70,13 +70,22 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const [openMenu, setOpenMenu] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
+  const menuRef = useRef(null);
   const toggleCollapsed = () => {
     setOpenMenu(!openMenu);
   };
 
-  const handleToggle = () => {
-    setOpenProfile(!openProfile);
-  };
+  useEffect(() => {
+    const handleToggle = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpenProfile(false);
+      }
+    };
+    document.addEventListener("mousedown", handleToggle);
+    return () => {
+      document.removeEventListener("mousedown", handleToggle);
+    };
+  }, [openProfile]);
 
   const onChange = (checked) => {
     // console.log(`switch to ${checked}`);
@@ -95,85 +104,68 @@ const Header = () => {
             />
           </Link>
         </div>
-        <div className="flex items-center">
-          {!user && (
-            <div className="flex">
-              <Link to="/login">
-                <button
-                  className="btn-primary font-bold px-2 py-2 mr-1 w-20"
-                  type="primary"
-                >
-                  Login
-                </button>
-              </Link>
-              <Link to="/register">
-                <button
-                  className="btn-primary font-bold px-2 py-2 mr-1"
-                  type="primary"
-                >
-                  Register
-                </button>
-              </Link>
+        <div ref={menuRef} className="relative">
+          <Avatar
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpenProfile(!openProfile);
+            }}
+            className="cursor-pointer hover:opacity-70"
+            size={60}
+            src={user?.photoURL || undefined}
+            icon={!user?.photoURL ? <AntDesignOutlined /> : undefined}
+          />
+          {openProfile && (
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className={
+                "absolute right-2 top-[70px] min-w-44 p-2 bg-white/80 rounded-md"
+              }
+            >
+              <ul className="space-y-2">
+                <li>
+                  <div className="flex items-center">
+                    <FaRegUserCircle className="text-xl mr-2 text-primary" />
+                    {user ? user.displayName : "Username"}
+                  </div>
+                </li>
+                <li>
+                  <div className="flex items-center">
+                    <FaEnvelope className="text-xl mr-2 text-primary" />
+                    {user ? user.email : "Email"}
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    {user ? (
+                      <button className="flex items-center " onClick={logOut}>
+                        <IoLogOut className="text-xl mr-2 text-primary" />
+
+                        <span className=" hover:text-primary">Logout</span>
+                      </button>
+                    ) : (
+                      <button className="flex items-center">
+                        <IoLogIn className="text-xl mr-2 text-primary" />
+                        <Link className="hover:text-primary" to="/login">
+                          Login
+                        </Link>
+                      </button>
+                    )}
+                  </div>
+                </li>
+                <li>
+                  <Switch
+                    className={
+                      theme === "dark" ? "!bg-primary" : "!bg-secondary"
+                    }
+                    defaultChecked
+                    onChange={onChange}
+                  />{" "}
+                  <span className="capitalize">Theme {theme}</span>
+                </li>
+              </ul>
             </div>
           )}
-          {user ? (
-            <Avatar
-            onClick={handleToggle}
-              className="cursor-pointer hover:opacity-70"
-              size={50}
-              src={user?.photoURL}
-            />
-          ) : (
-            <Avatar
-              onClick={handleToggle}
-              className="cursor-pointer hover:opacity-70"
-              size={50}
-              icon={<AntDesignOutlined />}
-            />
-          )}
-          <div
-            className={`${
-              openProfile ? "absolute" : "hidden"
-            } right-2 top-[80px] min-w-44 p-2 z-10 bg-white/80 w- rounded-md `}
-          >
-            <ul className="space-y-2">
-              <li>
-                <div className="flex items-center">
-                  <FaRegUserCircle className="text-xl mr-2 text-primary" />
-                  {user ? user.displayName : "Username"}
-                </div>
-              </li>
-              <li>
-                <div className="flex items-center">
-                  <FaEnvelope className="text-xl mr-2 text-primary" />
-                  {user ? user.email : "Email"}
-                </div>
-              </li>
-              <li>
-                <div>
-                  {user ? (
-                    <button className="flex items-center" onClick={logOut}>
-                      <IoLogOut className="text-xl mr-2 text-primary" />
-                      Logout
-                    </button>
-                  ) : (
-                    <button className="flex items-center" onClick={logOut}>
-                      <IoLogIn className="text-xl mr-2 text-primary" />
-                      <Link to="/login">Login</Link>
-                    </button>
-                  )}
-                </div>
-              </li>
-              <li>
-                <Switch
-                  className={theme === "dark" ? "!bg-primary" : "!bg-secondary"}
-                  defaultChecked
-                  onChange={onChange}
-                />{" "}
-                <span className="capitalize">Theme {theme}</span>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
       <div className="hidden md:block">
@@ -203,10 +195,23 @@ function AppMenu() {
   const { user, logOut } = useContext(AuthContext);
   const { theme, toggleTheme } = useTheme();
   const [openProfile, setOpenProfile] = useState(false);
+  const menuRef = useRef(null);
 
-  const handleToggle = () => {
-    setOpenProfile(!openProfile);
-  };
+  // const handleToggle = () => {
+  //   setOpenProfile(!openProfile);
+  // };
+
+  useEffect(() => {
+    const handleToggle = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpenProfile(false);
+      }
+    };
+    document.addEventListener("click", handleToggle);
+    return () => {
+      document.removeEventListener("click", handleToggle);
+    };
+  }, [openProfile]);
 
   const onChange = (checked) => {
     // console.log(`switch to ${checked}`);
@@ -252,68 +257,68 @@ function AppMenu() {
             </Link>
           </div>
         )}
-        <div className="relative">
-          {user ? (
-            <Avatar
-            onClick={handleToggle}
-              className="cursor-pointer hover:opacity-70"
-              size={60}
-              src={user?.photoURL}
-            />
-          ) : (
-            <Avatar
-            onClick={handleToggle}
-              className="cursor-pointer hover:opacity-70"
-              size={60}
-              icon={<AntDesignOutlined />}
-            />
-          )}
-          <div
-            className={`${
-              openProfile ? "absolute" : "hidden"
-            } right-2 top-[70px] min-w-44 p-2 bg-white/80 w- rounded-md `}
-          >
-            <ul className="space-y-2">
-              <li>
-                <div className="flex items-center">
-                  <FaRegUserCircle className="text-xl mr-2 text-primary" />
-                  {user ? user.displayName : "Username"}
-                </div>
-              </li>
-              <li>
-                <div className="flex items-center">
-                  <FaEnvelope className="text-xl mr-2 text-primary" />
-                  {user ? user.email : "Email"}
-                </div>
-              </li>
-              <li>
-                <div>
-                  {user ? (
-                    <button className="flex items-center " onClick={logOut}>
-                      <IoLogOut className="text-xl mr-2 text-primary" />
+        <div ref={menuRef} className="relative">
+          <Avatar
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpenProfile(!openProfile);
+            }}
+            className="cursor-pointer hover:opacity-70"
+            size={60}
+            src={user?.photoURL || undefined}
+            icon={!user?.photoURL ? <AntDesignOutlined /> : undefined}
+          />
+          {openProfile && (
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className={
+                "absolute right-2 top-[70px] min-w-44 p-2 bg-white/80 rounded-md"
+              }
+            >
+              <ul className="space-y-2">
+                <li>
+                  <div className="flex items-center">
+                    <FaRegUserCircle className="text-xl mr-2 text-primary" />
+                    {user ? user.displayName : "Username"}
+                  </div>
+                </li>
+                <li>
+                  <div className="flex items-center">
+                    <FaEnvelope className="text-xl mr-2 text-primary" />
+                    {user ? user.email : "Email"}
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    {user ? (
+                      <button className="flex items-center " onClick={logOut}>
+                        <IoLogOut className="text-xl mr-2 text-primary" />
 
-                      <span className=" hover:text-primary">Logout</span>
-                    </button>
-                  ) : (
-                    <button className="flex items-center">
-                      <IoLogIn className="text-xl mr-2 text-primary" />
-                      <Link className="hover:text-primary" to="/login">
-                        Login
-                      </Link>
-                    </button>
-                  )}
-                </div>
-              </li>
-              <li>
-                <Switch
-                  className={theme === "dark" ? "!bg-primary" : "!bg-secondary"}
-                  defaultChecked
-                  onChange={onChange}
-                />{" "}
-                <span className="capitalize">Theme {theme}</span>
-              </li>
-            </ul>
-          </div>
+                        <span className=" hover:text-primary">Logout</span>
+                      </button>
+                    ) : (
+                      <button className="flex items-center">
+                        <IoLogIn className="text-xl mr-2 text-primary" />
+                        <Link className="hover:text-primary" to="/login">
+                          Login
+                        </Link>
+                      </button>
+                    )}
+                  </div>
+                </li>
+                <li>
+                  <Switch
+                    className={
+                      theme === "dark" ? "!bg-primary" : "!bg-secondary"
+                    }
+                    defaultChecked
+                    onChange={onChange}
+                  />{" "}
+                  <span className="capitalize">Theme {theme}</span>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
