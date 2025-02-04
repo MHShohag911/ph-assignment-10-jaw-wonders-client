@@ -2,7 +2,7 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Avatar, Button, Card, message, Rate } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Fade } from "react-awesome-reveal";
 const { Meta } = Card;
@@ -56,32 +56,36 @@ const ItemCard = ({ product, initialProducts, setInitialProducts, users }) => {
   };
 
   const handleDelete = (_id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`https://assignment-10-arts-and-crafts-server.vercel.app/products/${_id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            // console.log(data);
-            const remaining = initialProducts.filter((pro) => pro._id !== _id);
-            setInitialProducts(remaining);
+    if(user){
+      Swal.fire({
+        title: "Are you sure you wan't to delete?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`https://assignment-10-arts-and-crafts-server.vercel.app/products/${_id}`, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              // console.log(data);
+              const remaining = initialProducts.filter((pro) => pro._id !== _id);
+              setInitialProducts(remaining);
+            });
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
           });
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
-      }
-    });
+        }
+      });
+    }else{
+      error()
+    }
   };
 
   return (

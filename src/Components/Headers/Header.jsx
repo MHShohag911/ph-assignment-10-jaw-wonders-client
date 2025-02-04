@@ -84,8 +84,8 @@ const Header = () => {
   };
 
   return (
-    <div className="relative z-20">
-      <div className="bg-secondary/70 flex justify-between md:hidden w-full min-h-20 relative rounded-2xl px-2">
+    <div className="relative bg-secondary/70 rounded-2xl z-20">
+      <div className="flex justify-between md:hidden w-full min-h-20 relative px-2">
         <div className="">
           <Link to="/">
             <img

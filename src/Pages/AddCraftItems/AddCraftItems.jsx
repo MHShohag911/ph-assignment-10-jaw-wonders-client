@@ -109,7 +109,7 @@ const AddCraftItems = () => {
                   Wooden Utensils and Kitchenware
                 </Select.Option>
                 <Select.Option value="Jute Home Decor">
-                  Jute Home Decor'
+                  Jute Home Decor
                 </Select.Option>
                 <Select.Option value="Jute Kitchenware & Utensils">
                   Jute Kitchenware & Utensils

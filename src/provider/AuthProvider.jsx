@@ -8,7 +8,6 @@ import {
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.console";
-import { Spin } from "antd";
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
@@ -62,7 +61,7 @@ const AuthProvider = ({ children }) => {
   };
   return (
     <AuthContext.Provider value={authInfo}>
-      {loading? <div className="min-h-screen flex justify-center items-center"><Spin size="large" /></div> : children}
+      {children}
     </AuthContext.Provider>
   );
 };
